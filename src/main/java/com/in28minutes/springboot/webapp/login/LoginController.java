@@ -10,7 +10,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
-    //http
+
+   private Authenticationlog  service;
+
+   
+    public LoginController(Authenticationlog service) {
+      super();
+      this.service = service;
+   }
+
+   //http
      private Logger log = LoggerFactory.getLogger(getClass());
     // model put it into model
     @RequestMapping(value="login",method = RequestMethod.GET)
@@ -22,6 +31,14 @@ public class LoginController {
      public String gotoWelcomepage(@RequestParam String name, @RequestParam String password, ModelMap map){
         map.put("name", name);
         map.put("password",password);
+        if(service.authenticate(name,password)){
+        //authentification 
+        // name = carrington
+        // password = password 
         return "welcome";
+        }
+        
+         map.put("errorMessage","invalid creds! please try again  ");
+            return "login";
      }// end of login page 
 }// end of login controller 
