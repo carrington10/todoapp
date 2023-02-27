@@ -7,4 +7,4 @@ description
 targetDate 
 done
 
-things to store
+Things to store
