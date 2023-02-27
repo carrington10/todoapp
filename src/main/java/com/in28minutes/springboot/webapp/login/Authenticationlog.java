@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class Authenticationlog {
      public boolean authenticate(String username, String password )
      {
-        boolean isValid= username.equalsIgnoreCase("carrington");
+        boolean isValid= username.equalsIgnoreCase("lord");
         boolean passValid = password.equalsIgnoreCase("dummy");
         return isValid && passValid;
      } // end of boolean 
