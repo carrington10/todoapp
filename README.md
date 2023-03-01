@@ -1,2 +1,10 @@
 # todoapp
-to do app built using springboot
+To do app built using springboot
+
+id
+usernamew
+description
+targetDate 
+done
+
+Things to store
