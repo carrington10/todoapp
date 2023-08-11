@@ -31,18 +31,18 @@ public class TodoController {
     }// end of list all todos
 
     @RequestMapping(value="add-todo",method = RequestMethod.GET)
-    public String showNewTodoPage(ModelMap model){
-        
-       return "todo";
+    public String showNewTodoPage(ModelMap map){
+        String username = (String)map.get("name");
+        Todo todo = new Todo(0,username,"test",LocalDate.now().plusYears(1),false);
+        map.put("todo",todo);
+        return "todo";
     }// end of list all todos
 
     @RequestMapping(value="add-todo",method = RequestMethod.POST)
-    public String addNewTodo(@RequestParam String description,ModelMap map){
+    public String addNewTodo(ModelMap map, Todo todo){
         String username = (String)map.get("name");
-       tService.addTodo(username,description,LocalDate.now().plusYears(1),false);
+       tService.addTodo(username,todo.getDescription(),LocalDate.now().plusYears(1),false);
 
-
-       
        return "redirect:list-todos";
     }// end of list all todos
 }
